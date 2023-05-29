@@ -1,24 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ログイン</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="login_style.css">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <h1>ログイン</h1>
-  <form>
-    <label for="username">ユーザー名:</label>
-    <input type="text" id="username" name="username"><br><br>
-    <label for="password">パスワード:</label>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="submit" value="ログイン">
-  </form>
-  <div id="content" style="display:none;">
-    <h2>ようこそ！</h2>
-    <p>ログイン後のコンテンツをここに表示</p>
-  </div>
+    <h1>Login Page</h1>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br>
+        <input type="password" id="password" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
 
-  <script src="login.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#loginForm').submit(function(e) {
+                e.preventDefault();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                $.ajax({
+                    url: '/login',
+                    method: 'POST',
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            window.location.href = '/home';
+                        } else {
+                            alert('Invalid username or password');
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred during login');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -13,7 +13,7 @@ import javax.sql.DataSource;
         public DataSource dataSource() {
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName("org.postgresql.Driver");
-            dataSource.setUrl("jdbc:postgresql://localhost:5432/TODOAPP");
+            dataSource.setUrl("jdbc:postgresql://localhost:5432/todo_data");
             dataSource.setUsername("todouser");
             dataSource.setPassword("todopassword");
 

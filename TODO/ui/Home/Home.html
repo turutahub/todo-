@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>TODO Application</title>
 	<link rel="stylesheet" type="text/css" href="Home.css">
 	<script src="Home.js"></script>
@@ -11,35 +13,33 @@
 		<div id="clock"></div>
 		<div id="date"></div>
 	</h1>
-	<form>
-		<label for="taskname">Task Name:</label>
-		<input type="text" id="taskname" name="taskname"><br>
+	<form id="addTaskForm">
+		<label for="taskTitle">Task Title:</label>
+		<input type="text" id="taskTitle" name="taskTitle"><br>
 
-		<label for="taskPriority">Priority:</label>
-		<select id="taskPriority" name="taskPriority">
-			<option value="低">低</option>
-			<option value="中">中</option>
-			<option value="高">高</option>
-		</select><br>
+		<label for="taskStart">Start Date:</label>
+		<input type="date" id="taskStart" name="taskStart"><br>
 
-		<label for="taskDueDate">Due Date:</label>
-		<input type="date" id="taskDueDate" name="taskDueDate"><br>
+		<label for="taskEnd">End Date:</label>
+		<input type="date" id="taskEnd" name="taskEnd"><br>
+
+		<label for="taskCompleted">Completed:</label>
+		<input type="checkbox" id="taskCompleted" name="taskCompleted"><br>
 
 		<button type="button" onclick="addTask()">Add Task</button>
 	</form>
 
-	<h2>タスク一覧</h2>
+	<h2>Task List</h2>
 	<table id="taskList">
-		<tr>
+		<tr id="tableHeader">
 			<th>ID</th>
 			<th>Title</th>
 			<th>Start</th>
 			<th>End</th>
 			<th>Completed</th>
-			<th>Created At</th>
-			<th>Updated</th>
+			<th>Created_at</th>
+			<th>Action</th> <!-- 削除ボタン追加 -->
 		</tr>
 	</table>
 </body>
 </html>
-
