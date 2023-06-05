@@ -8,8 +8,7 @@ public interface TodoRepository {
     List<TodoModel> getAllTodo();
     void insertTodo(TodoModel todo);
     void updateTodo(TodoModel todo);
-    void deleteTodoById(Long id);
-    TodoModel getTodoById(Long id);
+    void deleteTodoById(int id);
+    TodoModel getTodoById(int id);
 }
-
 

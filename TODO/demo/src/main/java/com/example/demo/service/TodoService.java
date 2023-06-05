@@ -22,21 +22,13 @@ public class TodoService {
         todoRepository.insertTodo(todo);
     }
 
-    public void updateTodo(Long id, TodoModel updatedTodo) {
+    public void updateTodo(int id, TodoModel updatedTodo) {
         TodoModel todo = todoRepository.getTodoById(id);
         if (todo != null) {
             todoRepository.updateTodo(updatedTodo);
         }
     }
-
-    public void deleteTodoById(Long id) {
+    public void deleteTodoById(int id) {
         todoRepository.deleteTodoById(id);
     }
 }
-
-    /*ソート機能処理
-        public List<Todo> getAllTodosSorted(String sortBy, boolean ascending) {
-            Sort sort = ascending ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
-            return todoRepository.findAll(sort);
-        }
-    }*/

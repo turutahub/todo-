@@ -3,11 +3,12 @@ package com.example.demo.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 public class TodoModel {
     private int id;
     private String title;
     private LocalDate start;
-    private LocalDate end_date; // カラム名をendからend_dateに変更
+    private LocalDate end_date;
     private boolean completed;
     private LocalDateTime created_at;
 

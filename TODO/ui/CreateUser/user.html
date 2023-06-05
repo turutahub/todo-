@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ユーザー登録</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="register.css">
+</head>
+<body>
+    <h1>登録内容</h1>
+    <form id="registrationForm">
+        <p>ユーザー名</p>
+        <input type="text" maxlength="100" placeholder="haru" id="username" required><br>
+
+        <p>パスワード</p>
+        <input type="password" maxlength="20" placeholder="半角英数8文字以上" id="password" required><br>
+
+        <p>パスワード再入力</p>
+        <input type="password" maxlength="20" placeholder="半角英数8文字以上" id="confirmPassword" required><br>
+
+        <button type="submit">登録</button>
+
+        <button id="backButton" style="display: none">戻る</button>
+    </form>
+</body>
+<script src="user.js"></script>
+</html>

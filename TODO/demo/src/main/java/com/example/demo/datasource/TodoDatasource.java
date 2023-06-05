@@ -31,26 +31,26 @@ public class TodoDatasource implements TodoRepository {
     }
 
     private TodoModel toModel(Map<String, Object> record) {
-            if (record != null) {
-                Date start = (Date) record.get("start");
-                Date endDate = (Date) record.get("end_date");
-                Timestamp createdAt = (Timestamp) record.get("created_at");
+        if (record != null) {
+            Date start = (Date) record.get("start");
+            Date endDate = (Date) record.get("end_date");
+            Timestamp createdAt = (Timestamp) record.get("created_at");
 
-                return new TodoModel(
-                        (int) record.get("id"),
-                        (String) record.get("title"),
-                        start != null ? start.toLocalDate() : null,
-                        endDate != null ? endDate.toLocalDate() : null,
-                        record.get("completed") != null ? (boolean) record.get("completed") : false,
-                        createdAt != null ? createdAt.toLocalDateTime() : null
-                        //recordがnullでないことをチェックしてから変数を取得し、nullである場合には適切な初期値を設定
-                );
-            } else {
-                return null;
-            }
+            return new TodoModel(
+                    (int) record.get("id"),
+                    (String) record.get("title"),
+                    start != null ? start.toLocalDate() : null,
+                    endDate != null ? endDate.toLocalDate() : null,
+                    record.get("completed") != null ? (boolean) record.get("completed") : false,
+                    createdAt != null ? createdAt.toLocalDateTime() : null
+                    //recordがnullでないことをチェックしてから変数を取得し、nullである場合には適切な初期値を設定
+            );
+        } else {
+            return null;
         }
+    }
     @Override
-    public TodoModel getTodoById(Long id) {
+    public TodoModel getTodoById(int id) {
         String sql = "SELECT * FROM todo WHERE id = ?";
         Map<String, Object> record = jdbcTemplate.queryForMap(sql, id);
 
@@ -74,13 +74,14 @@ public class TodoDatasource implements TodoRepository {
 
     @Override
     public void insertTodo(TodoModel todo) {
-        String sql = "INSERT INTO todo (title, start, end_date, completed) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO todo (title, start, end_date, completed, created_at) VALUES (?, ?, ?, ?, ?)";
         jdbcTemplate.update(
                 sql,
                 todo.getTitle(),
                 Date.valueOf(todo.getStart()),
                 Date.valueOf(todo.getEnd_date()),
-                todo.isCompleted()
+                todo.isCompleted(),
+                todo.getCreated_at()
         );
     }
 
@@ -98,8 +99,9 @@ public class TodoDatasource implements TodoRepository {
     }
 
     @Override
-    public void deleteTodoById(Long id) {
+    public void deleteTodoById(int id) {
         String sql = "DELETE FROM todo WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 }
+

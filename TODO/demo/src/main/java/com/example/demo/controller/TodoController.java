@@ -34,14 +34,15 @@ public class TodoController {
         todo.setCreated_at(LocalDateTime.now());
     }
 
-    @PutMapping("/{id}")
-    public void updateTodo(@PathVariable Long id, @RequestBody TodoModel updatedTodo) {
+    @PutMapping(value = "/{id}")
+    public void updateTodo(@PathVariable int id, @RequestBody TodoModel updatedTodo) {
         service.updateTodo(id, updatedTodo);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTodo(@PathVariable Long id) {
+    public void deleteTodo(@PathVariable int id) {
         service.deleteTodoById(id);
     }
 }
+

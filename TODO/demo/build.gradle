@@ -13,16 +13,27 @@ repositories {
 }
 
 dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
-		implementation 'org.springframework.boot:spring-boot-starter-security'
-		implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	    implementation('com.google.code.gson:gson:2.10.1')
-		runtimeOnly 'com.h2database:h2'
-		runtimeOnly 'org.postgresql:postgresql:42.5.4'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation('com.google.code.gson:gson:2.10.1')
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql:42.5.4'
+	implementation 'org.postgresql:postgresql:42.5.4'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-tasks.named('test') {
-	useJUnitPlatform()
+//flyway {
+//	driver = 'org.postgresql.Driver'
+//	url = 'jdbc:postgresql://localhost:5435/warehouse'
+//	user = 'todouser'
+//	password = 'todopassword'
+//	schemas = ['public']
+//	locations = ['classpath:db/migration,filesystem:./local/testdata/']
+//}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
 }

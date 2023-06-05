@@ -1,6 +1,12 @@
-/*import com.example.demo.datasource.UserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.example.demo.repository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    UserEntity.User findByUsernameAndPassword(String username, String password);
-}*/
+import com.example.demo.datasource.LoginEntity;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository {
+
+    LoginEntity findByUsernameAndPassword(String username, String password);
+
+    LoginEntity insert(LoginEntity user);
+}

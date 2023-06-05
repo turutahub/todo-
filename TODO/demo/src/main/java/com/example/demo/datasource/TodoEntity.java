@@ -9,12 +9,9 @@ public class TodoEntity {
     private int id;
     private String title;
     private LocalDate start;
-    private LocalDate endDate; // カラム名をendからend_dateに変更
+    private LocalDate endDate;
     private boolean completed;
     private LocalDateTime created_at;
-
-    public TodoEntity() {
-    }
 
     public TodoEntity(int id, String title, LocalDate start, LocalDate endDate, boolean completed, LocalDateTime created_at) {
         this.id = id;
@@ -30,16 +27,13 @@ public class TodoEntity {
                 todo.getId(),
                 todo.getTitle(),
                 todo.getStart(),
-                todo.getEnd_date(), // メソッド名も修正
+                todo.getEnd_date(),
                 todo.isCompleted(),
                 todo.getCreated_at()
         );
     }
 
-    public int getId() {
-        return id;
-    }
-
+    public int getId() { return id; }
     public void setId(int id) {
         this.id = id;
     }
@@ -61,9 +55,7 @@ public class TodoEntity {
         this.start = start;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+    public LocalDate getEndDate() { return endDate; }
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;

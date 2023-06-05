@@ -1,45 +1,50 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>TODO Application</title>
-	<link rel="stylesheet" type="text/css" href="Home.css">
-	<script src="Home.js"></script>
+    <title>TODO Application</title>
+    <link rel="stylesheet" type="text/css" href="Home.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="Home.js"></script>
 </head>
 <body>
-	<h1>
-		MyTODO
-		<div id="clock"></div>
-		<div id="date"></div>
-	</h1>
-	<form id="addTaskForm">
-		<label for="taskTitle">Task Title:</label>
-		<input type="text" id="taskTitle" name="taskTitle"><br>
+    <h1>
+        MyTODO
+        <div id="clock"></div>
+        <div id="date"></div>
+    </h1>
+    <form id="addTaskForm">
+        <label for="taskTitle">タスク名:</label>
+        <input type="text" id="taskTitle" name="taskTitle"><br>
 
-		<label for="taskStart">Start Date:</label>
-		<input type="date" id="taskStart" name="taskStart"><br>
+        <label for="taskStart">開始日:</label>
+        <input type="date" id="taskStart" name="taskStart"><br>
 
-		<label for="taskEnd">End Date:</label>
-		<input type="date" id="taskEnd" name="taskEnd"><br>
+        <label for="taskEnd">期限:</label>
+        <input type="date" id="taskEnd" name="taskEnd"><br>
 
-		<label for="taskCompleted">Completed:</label>
-		<input type="checkbox" id="taskCompleted" name="taskCompleted"><br>
+        <label for="taskCompleted">Completed:</label>
+        <input type="checkbox" id="taskCompleted" name="taskCompleted"><br>
 
-		<button type="button" onclick="addTask()">Add Task</button>
-	</form>
+        <button type="button" onclick="addTask()">タスクを追加</button>
+    </form>
 
-	<h2>Task List</h2>
-	<table id="taskList">
-		<tr id="tableHeader">
-			<th>ID</th>
-			<th>Title</th>
-			<th>Start</th>
-			<th>End</th>
-			<th>Completed</th>
-			<th>Created_at</th>
-			<th>Action</th> <!-- 削除ボタン追加 -->
-		</tr>
-	</table>
+    <h2>Task List</h2>
+
+    <table id="taskList">
+        <tr id="tableHeader">
+            <th>ID</th>
+            <th>タスク名</th>
+            <th>開始</th>
+            <th>期限</th>
+            <th>Completed</th>
+            <th>生成日</th>
+            <th>機能</th>
+        </tr>
+    </table>
+
+    <button id="sortButton"onclick = "fetchAndSortTasks()">開始順にソート</button>
 </body>
 </html>

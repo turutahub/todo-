@@ -1,59 +1,37 @@
-/*package com.example.demo.controller;
+package com.example.demo.controller;
 
+import com.example.demo.controller.request.LoginRequest;
+import com.example.demo.datasource.LoginEntity;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class LoginController {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/login")
-    @ResponseBody
-    public LoginResponse login(@RequestBody LoginRequest loginRequest) {
-        String username = loginRequest.getUsername();
-        String password = loginRequest.getPassword();
+    public String login(@RequestBody LoginRequest loginRequest) {
+       String username = loginRequest.getUsername();
+       String password = loginRequest.getPassword();
 
-        User user = userRepository.findByUsernameAndPassword(username, password);
+        // ユーザーをデータベースから検索
+        LoginEntity user = userRepository.findByUsernameAndPassword(username, password);
+
         if (user != null) {
-            return new LoginResponse(true, "Login successful");
+            // ログイン成功
+            return "ログイン成功";
         } else {
-            return new LoginResponse(false, "Invalid username or password");
+            // ログイン失敗
+            return "ログイン失敗";
         }
     }
-
-    private static class LoginRequest {
-        private String username;
-        private String password;
-
-        public String getUsername() {
-            return username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-    }
-
-    private static class LoginResponse {
-        private boolean success;
-        private String message;
-
-        public LoginResponse(boolean success, String message) {
-            this.success = success;
-            this.message = message;
-        }
-
-        public boolean isSuccess() {
-            return success;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-    }
-}*/
+}
